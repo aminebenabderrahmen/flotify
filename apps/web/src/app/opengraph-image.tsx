@@ -78,7 +78,7 @@ export default async function OGImage() {
 					}}
 				>
 					<span style={{ fontSize: '20px', color: '#a1a1aa' }}>
-						flotify.dev
+						flotify.vercel.app
 					</span>
 					<span style={{ fontSize: '20px', color: '#3f3f46' }}>
 						·

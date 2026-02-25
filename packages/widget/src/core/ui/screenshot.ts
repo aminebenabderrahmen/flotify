@@ -1,28 +1,36 @@
-let html2canvasModule: typeof import('html2canvas') | null = null
+type Html2CanvasFn = (element: HTMLElement, options?: Record<string, unknown>) => Promise<HTMLCanvasElement>
 
-async function loadHtml2Canvas(): Promise<typeof import('html2canvas')> {
-	if (html2canvasModule) return html2canvasModule
+function loadHtml2Canvas(): Promise<Html2CanvasFn> {
+	const w = window as any
+	if (w.html2canvas) return Promise.resolve(w.html2canvas)
 
-	html2canvasModule = await import(
-		/* @vite-ignore */
-		'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.esm.js'
-	)
-
-	return html2canvasModule
+	return new Promise((resolve, reject) => {
+		const script = document.createElement('script')
+		script.src =
+			'https://cdn.jsdelivr.net/npm/html2canvas-pro@1.5.8/dist/html2canvas-pro.min.js'
+		script.onload = () => {
+			if (w.html2canvas) resolve(w.html2canvas)
+			else reject(new Error('html2canvas-pro failed to load'))
+		}
+		script.onerror = () => reject(new Error('Failed to load html2canvas-pro'))
+		document.head.appendChild(script)
+	})
 }
 
 export async function captureScreenshot(): Promise<Blob> {
-	const mod = await loadHtml2Canvas()
-	const html2canvas = mod.default || mod
+	const html2canvas = await loadHtml2Canvas()
 
-	// Hide the flotify widget during capture
-	const widget = document.querySelector('.flotify-modal') as HTMLElement | null
+	// Hide flotify elements during capture
+	const modal = document.querySelector('.flotify-modal') as HTMLElement | null
 	const bubble = document.querySelector('.flotify-bubble') as HTMLElement | null
 	const overlay = document.querySelector('.flotify-overlay') as HTMLElement | null
 
-	if (widget) widget.style.display = 'none'
+	if (modal) modal.style.display = 'none'
 	if (bubble) bubble.style.display = 'none'
 	if (overlay) overlay.style.display = 'none'
+
+	// Wait for repaint
+	await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
 
 	try {
 		const canvas = await html2canvas(document.body, {
@@ -43,7 +51,7 @@ export async function captureScreenshot(): Promise<Blob> {
 			)
 		})
 	} finally {
-		if (widget) widget.style.display = ''
+		if (modal) modal.style.display = ''
 		if (bubble) bubble.style.display = ''
 		if (overlay) overlay.style.display = ''
 	}

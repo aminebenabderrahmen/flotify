@@ -47,7 +47,7 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			position: fixed;
 			z-index: 2147483647;
 			width: 380px;
-			max-height: 520px;
+			max-height: min(520px, calc(100vh - 100px));
 			background: ${bg};
 			border: 1px solid ${border};
 			border-radius: 12px;
@@ -56,11 +56,18 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			color: ${text};
 			overflow: hidden;
 			animation: flotify-slide-in 0.15s ease-out;
+			display: flex;
+			flex-direction: column;
 		}
 
 		@keyframes flotify-slide-in {
 			from { opacity: 0; transform: translateY(8px); }
 			to { opacity: 1; transform: translateY(0); }
+		}
+
+		.flotify-modal svg {
+			max-width: 100%;
+			height: auto;
 		}
 
 		.flotify-modal-header {
@@ -69,6 +76,7 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			justify-content: space-between;
 			padding: 16px 20px;
 			border-bottom: 1px solid ${border};
+			flex-shrink: 0;
 		}
 		.flotify-modal-title {
 			font-size: 14px;
@@ -93,7 +101,8 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 		.flotify-modal-body {
 			padding: 20px;
 			overflow-y: auto;
-			max-height: 420px;
+			flex: 1;
+			min-height: 0;
 		}
 
 		.flotify-field {
@@ -145,13 +154,25 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			padding: 8px 12px;
 			font-size: 13px;
 			border: 1px solid ${border};
-			border-radius: 9999px;
+			border-radius: 8px;
 			background: ${bg};
 			color: ${text};
 			outline: none;
 			transition: border-color 0.15s ease;
 			box-sizing: border-box;
 			font-family: inherit;
+		}
+		.flotify-select {
+			appearance: none;
+			-webkit-appearance: none;
+			padding-right: 32px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='${encodeURIComponent(textMuted)}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: right 10px center;
+			background-size: 16px;
+		}
+		.flotify-input {
+			border-radius: 9999px;
 		}
 		.flotify-textarea {
 			border-radius: 10px;
@@ -207,6 +228,11 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			transition: all 0.15s ease;
 			font-family: inherit;
 		}
+		.flotify-screenshot-capture-btn svg {
+			width: 16px;
+			height: 16px;
+			flex-shrink: 0;
+		}
 		.flotify-screenshot-capture-btn:hover {
 			border-color: ${accentColor};
 			background: ${bgMuted};
@@ -245,6 +271,7 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			gap: 8px;
 			padding: 16px 20px;
 			border-top: 1px solid ${border};
+			flex-shrink: 0;
 		}
 		.flotify-btn-cancel {
 			padding: 8px 16px;
@@ -304,6 +331,7 @@ export function injectStyles(accentColor: string, theme: 'light' | 'dark'): void
 			font-size: 11px;
 			color: ${textMuted};
 			border-top: 1px solid ${border};
+			flex-shrink: 0;
 		}
 		.flotify-powered a {
 			color: ${textMuted};

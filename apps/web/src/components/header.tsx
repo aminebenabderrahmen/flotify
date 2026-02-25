@@ -13,6 +13,12 @@ export function Header() {
 				</Link>
 				<div className="flex items-center space-x-4">
 					<Link
+						href="/demo"
+						className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+					>
+						Demo
+					</Link>
+					<Link
 						href="/docs"
 						className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
 					>
