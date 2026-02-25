@@ -10,7 +10,7 @@ Open-source feedback widget for your website. Bug reports, feature requests, and
 [![npm version](https://img.shields.io/npm/v/@flotify/widget.svg)](https://www.npmjs.com/package/@flotify/widget)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/@flotify/widget)](https://bundlephobia.com/package/@flotify/widget)
 
-[Documentation](https://flotify.dev/docs) · [Quick Start](https://flotify.dev/docs/quick-start) · [Trello Setup Guide](https://flotify.dev/docs/trello-setup)
+[Documentation](https://flotify.vercel.app/docs) · [Quick Start](https://flotify.vercel.app/docs/quick-start) · [Trello Setup Guide](https://flotify.vercel.app/docs/trello-setup)
 
 </div>
 

@@ -1,6 +1,6 @@
 {
   "name": "@flotify/widget",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Collect user feedback and push it to your project board. Lightweight, framework-agnostic widget.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,7 +31,7 @@
     "flotify"
   ],
   "license": "MIT",
-  "homepage": "https://flotify.dev",
+  "homepage": "https://flotify.vercel.app",
   "bugs": {
     "url": "https://github.com/aminebenabderrahmen/flotify/issues"
   },

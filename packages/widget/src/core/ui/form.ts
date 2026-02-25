@@ -26,11 +26,14 @@ export function createForm(options: FormOptions): HTMLElement & { destroy: () =>
 	let screenshotUrl: string | null = null
 	let successTimer: ReturnType<typeof setTimeout> | null = null
 	let isSubmitting = false
+	let isCapturing = false
 
 	// Overlay
 	const overlay = document.createElement('div')
 	overlay.className = 'flotify-overlay'
-	overlay.addEventListener('click', onClose)
+	overlay.addEventListener('click', () => {
+		if (!isCapturing) onClose()
+	})
 
 	// Modal
 	const modal = document.createElement('div')
@@ -205,22 +208,16 @@ export function createForm(options: FormOptions): HTMLElement & { destroy: () =>
 	captureBtn.addEventListener('click', async () => {
 		captureBtn.textContent = 'Capturing...'
 		captureBtn.disabled = true
+		isCapturing = true
 		try {
-			// Temporarily hide the modal for capture
-			modal.style.display = 'none'
-			overlay.style.display = 'none'
-
-			await new Promise((r) => setTimeout(r, 100))
 			const blob = await captureScreenshot()
-
-			modal.style.display = ''
-			overlay.style.display = ''
 			showPreview(blob)
-		} catch {
-			modal.style.display = ''
-			overlay.style.display = ''
+		} catch (err) {
+			console.error('[Flotify] Screenshot capture failed:', err)
 			captureBtn.innerHTML = `${ICONS.camera} Auto-capture`
 			captureBtn.disabled = false
+		} finally {
+			isCapturing = false
 		}
 	})
 
@@ -283,7 +280,7 @@ export function createForm(options: FormOptions): HTMLElement & { destroy: () =>
 	// --- Powered by ---
 	const powered = document.createElement('div')
 	powered.className = 'flotify-powered'
-	powered.innerHTML = 'Powered by <a href="https://flotify.dev" target="_blank" rel="noopener">Flotify</a>'
+	powered.innerHTML = 'Powered by <a href="https://flotify.vercel.app" target="_blank" rel="noopener">Flotify</a>'
 
 	// Assemble modal
 	modal.appendChild(header)

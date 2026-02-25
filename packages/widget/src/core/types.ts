@@ -42,4 +42,5 @@ export interface FlotifyConfig {
 	theme?: 'light' | 'dark' | 'auto'
 	accentColor?: string
 	locale?: 'en' | 'fr'
+	onSubmitSuccess?: () => void
 }

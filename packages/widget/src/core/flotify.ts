@@ -81,6 +81,7 @@ export class FlotifyWidget {
 				if (!result.success) {
 					throw new Error(result.error)
 				}
+				this.config.onSubmitSuccess?.()
 			},
 			onClose: () => this.close(),
 		})

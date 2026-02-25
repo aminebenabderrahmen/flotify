@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 	description:
 		'Open-source feedback widget for your website. Collect bug reports, feature requests, and questions — synced directly to Trello.',
 	keywords: ['feedback', 'widget', 'trello', 'bug-report', 'open-source', 'flotify'],
-	metadataBase: new URL('https://flotify.dev'),
+	metadataBase: new URL('https://flotify.vercel.app'),
 	openGraph: {
 		title: 'Flotify — Collect feedback. Push to your board.',
 		description:
 			'Open-source feedback widget for your website. Bug reports, feature requests, and questions — synced directly to Trello. Free forever.',
-		url: 'https://flotify.dev',
+		url: 'https://flotify.vercel.app',
 		siteName: 'Flotify',
 		locale: 'en_US',
 		type: 'website',

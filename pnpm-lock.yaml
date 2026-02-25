@@ -17,6 +17,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@flotify/widget':
+        specifier: workspace:*
+        version: link:../../packages/widget
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1

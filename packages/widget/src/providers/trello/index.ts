@@ -31,7 +31,7 @@ function buildDescription(feedback: Feedback): string {
 	sections.push(`- **Screen:** ${feedback.metadata.screenSize}`)
 	sections.push(`- **Time:** ${feedback.metadata.timestamp}`)
 	sections.push('')
-	sections.push('*Sent via [Flotify](https://flotify.dev)*')
+	sections.push('*Sent via [Flotify](https://flotify.vercel.app)*')
 
 	return sections.join('\n')
 }

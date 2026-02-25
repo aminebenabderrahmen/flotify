@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: '*',
 			allow: '/',
 		},
-		sitemap: 'https://flotify.dev/sitemap.xml',
+		sitemap: 'https://flotify.vercel.app/sitemap.xml',
 	}
 }
