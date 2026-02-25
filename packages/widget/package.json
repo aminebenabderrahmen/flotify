@@ -1,0 +1,45 @@
+{
+  "name": "@flotify/widget",
+  "version": "0.1.0",
+  "description": "Collect user feedback and push it to your project board. Lightweight, framework-agnostic widget.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "feedback",
+    "widget",
+    "trello",
+    "bug-report",
+    "user-feedback",
+    "flotify"
+  ],
+  "license": "MIT",
+  "homepage": "https://flotify.dev",
+  "bugs": {
+    "url": "https://github.com/aminebenabderrahmen/flotify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aminebenabderrahmen/flotify"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0"
+  }
+}

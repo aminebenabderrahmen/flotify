@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flotify Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: #09090b;
+    }
+    h1 { font-size: 2rem; font-weight: 700; }
+    p { color: #71717a; line-height: 1.6; }
+    code {
+      background: #f4f4f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flotify Demo</h1>
+  <p>This is a demo page. Click the bubble in the bottom-right corner to report feedback.</p>
+  <p>Your feedback will be sent to a Trello board.</p>
+  <p>Replace the <code>apiKey</code>, <code>token</code>, and <code>listId</code> below with your own Trello credentials.</p>
+
+  <script type="module">
+    import { Flotify } from '../../packages/widget/src/index.ts'
+
+    Flotify.init({
+      provider: 'trello',
+      trello: {
+        apiKey: 'YOUR_TRELLO_API_KEY',
+        token: 'YOUR_TRELLO_TOKEN',
+        listId: 'YOUR_TRELLO_LIST_ID',
+      },
+      position: 'bottom-right',
+      theme: 'light',
+    })
+  </script>
+</body>
+</html>
