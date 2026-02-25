@@ -1,6 +1,6 @@
 {
   "name": "@flotify/widget",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collect user feedback and push it to your project board. Lightweight, framework-agnostic widget.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -14,7 +14,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",
